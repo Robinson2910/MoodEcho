@@ -1,0 +1,5 @@
+npm install --save @supabase/supabase-js
+
+npm i styled-components
+
+npm i react-icons
