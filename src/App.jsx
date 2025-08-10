@@ -13,6 +13,8 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
+import Login from "./pages/Login";
+import ProtectedRoute from "./ui/ProtectedRoute";
 const queryClient = new QueryClient({
   // refetching happens after 0 seconds now
   //so whenever value is changed or when there is switching btwn pages
@@ -35,7 +37,17 @@ function App() {
         <GlobalStyles />
         <BrowserRouter>
           <Routes>
-            <Route element={<AppLayout />}>
+            <Route
+              path="login"
+              element={<Login />}
+            />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
               <Route
                 index
                 element={
@@ -45,6 +57,7 @@ function App() {
                   />
                 }
               />
+
               <Route
                 element={<Therapists />}
                 path="/therapists"
